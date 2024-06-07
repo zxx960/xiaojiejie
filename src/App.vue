@@ -14,6 +14,8 @@
         controls
         autoplay
         muted
+        webkit-playsinline="true"
+        playsinline='true'
       ></video>
       <div class="buttons">
         <button @click="prev">上一个</button>
@@ -85,7 +87,7 @@ export default {
   font-weight: bold;
   color: #000;
 }
-.subtitle{
+.subtitle {
   font-size: 25px;
   margin-top: 10px;
 }
