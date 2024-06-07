@@ -1,26 +1,33 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div class="container" style="width: 800px;margin: auto;">
+    <div style="text-align: center;">
+      <div class="title">无聊小姐姐</div>
+      <div class="title">无聊就来刷小姐姐吧</div>
+      <video :src="url" controls width="300"></video>
+    </div>
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
-}
+  data() {
+    return {
+      url: ''
+    };
+  },
+   mounted() {
+    fetch('https://api.pearktrue.cn/api/random/xjj/?type=json').then(res => {
+      res.json().then(data => {
+        this.url = data.video;
+      })
+    })
+  },
+};
 </script>
-
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+<style scoped>
+.title {
+  font-size: 30px;
+  font-weight: bold;
+  color: #000;
 }
 </style>
