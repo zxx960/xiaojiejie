@@ -88,8 +88,7 @@ export default {
       }
     },
     download() {
-      
-      fetch(this.urlList[0])
+      fetch(document.querySelector('video').src)
         .then(res => res.blob())
         .then(blob => {
           fileDownload(blob, `${Math.floor(Math.random() * 100000) + 1}.mp4`)
