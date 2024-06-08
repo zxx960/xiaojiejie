@@ -10,6 +10,7 @@
   "dependencies": {
     "core-js": "^3.8.3",
     "js-file-download": "^0.4.12",
+    "vant": "^4.9.1",
     "vue": "^3.2.13",
     "xgplayer": "^3.0.18"
   },

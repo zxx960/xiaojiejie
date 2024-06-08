@@ -1,12 +1,12 @@
 <template>
-  <div class="container" style="width: 800px; margin: auto; display: flex; flex-direction: column">
-    <div style="text-align: center; margin-top: 100px">
+  <div class="container" style="width: 100%;max-width: 800px; margin:0 auto; display: flex; flex-direction: column">
+    <div style="text-align: center;margin-top: 50px;  ">
       <div class="subtitle">小姐姐大舞台</div>
-      <div id="mse"></div>
-      <div class="buttons">
-        <button @click="prev">上一个</button>
-        <button @click="next">下一个</button>
-        <button @click="download">下载</button>
+      <div id="mse" style="margin-top: 20px;"></div>
+      <div class="buttons" style="margin-top: 20px;">
+        <van-button type="primary" size="small" @click="download">下载</van-button>
+        <van-button type="primary" style="margin-left: 10px;" size="small" @click="prev">上一个</van-button>
+        <van-button style="margin-left: 10px;" type="primary" size="small" @click="next">下一个</van-button>
       </div>
     </div>
   </div>
@@ -15,10 +15,13 @@
 <script>
 import Player from "xgplayer";
 import { Events } from 'xgplayer'
-import fileDownload  from 'js-file-download'
+import fileDownload from 'js-file-download'
 import "xgplayer/dist/index.min.css";
+import { Button } from 'vant';
 export default {
-  components: {},
+  components: {
+    [Button.name]: Button,
+  },
   data() {
     return {
       urlList: [],
@@ -48,7 +51,7 @@ export default {
         id: "mse",
         url: src,
         height: 450,
-        width: 800,
+        width: '100%',
         autoplay: true,
         autoplayMuted: true,
       });
@@ -98,14 +101,9 @@ export default {
 };
 </script>
 <style scoped>
-.title {
-  font-size: 50px;
-  font-weight: bold;
-  color: #000;
-}
 .subtitle {
   font-weight: bold;
   font-size: 25px;
-  margin-top: 10px;
+  /* margin-top: 10px; */
 }
 </style>
