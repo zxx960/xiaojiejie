@@ -5,7 +5,9 @@
       <div id="mse" style="margin-top: 20px;"></div>
       <div class="buttons" style="margin-top: 20px;">
         <van-button type="primary" size="small" @click="download">下载</van-button>
-        <van-button type="primary" style="margin-left: 10px;" size="small" @click="prev">上一个</van-button>
+        <van-button type="success" style="margin-left: 10px;" size="small" @click="isAutoNext = !isAutoNext">自动播放:{{
+          isAutoNext ? '开' : '关' }}</van-button>
+        <van-button type="success" style="margin-left: 10px;" size="small" @click="prev">上一个</van-button>
         <van-button style="margin-left: 10px;" type="primary" size="small" @click="next">下一个</van-button>
       </div>
     </div>
@@ -30,6 +32,7 @@ export default {
       options: {
         src: "", //视频源
       },
+      isAutoNext: false
     };
   },
   mounted() {
@@ -55,6 +58,11 @@ export default {
         autoplay: true,
         autoplayMuted: true,
       });
+      player.on(Events.ENDED, async () => {
+        if(this.isAutoNext){
+          this.next()
+        }
+      })
       player.on(Events.ERROR, async () => {
         fetch("https://api.pearktrue.cn/api/random/xjj/?type=json").then(
           (res) => {
@@ -103,7 +111,6 @@ export default {
 <style scoped>
 .subtitle {
   font-weight: bold;
-  font-size: 25px;
-  /* margin-top: 10px; */
+  font-size: 40px;
 }
 </style>
