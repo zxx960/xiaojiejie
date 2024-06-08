@@ -92,7 +92,7 @@ export default {
         .then(blob => {
           const a = document.createElement("a");
           const objectUrl = window.URL.createObjectURL(blob);
-          a.download = name;
+          a.download = '小姐姐';
           a.href = objectUrl;
           a.click();
           window.URL.revokeObjectURL(objectUrl);
