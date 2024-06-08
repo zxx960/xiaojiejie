@@ -15,6 +15,7 @@
 <script>
 import Player from "xgplayer";
 import { Events } from 'xgplayer'
+import fileDownload  from 'js-file-download'
 import "xgplayer/dist/index.min.css";
 export default {
   components: {},
@@ -87,16 +88,11 @@ export default {
       }
     },
     download() {
+      
       fetch(this.urlList[0])
         .then(res => res.blob())
         .then(blob => {
-          const a = document.createElement("a");
-          const objectUrl = window.URL.createObjectURL(blob);
-          a.download = '小姐姐';
-          a.href = objectUrl;
-          a.click();
-          window.URL.revokeObjectURL(objectUrl);
-          a.remove();
+          fileDownload(blob,'小姐姐.mp4')
         })
     }
   },
