@@ -92,7 +92,7 @@ export default {
       fetch(this.urlList[0])
         .then(res => res.blob())
         .then(blob => {
-          fileDownload(blob,'小姐姐.mp4')
+          fileDownload(blob, `${Math.floor(Math.random() * 100000) + 1}.mp4`)
         })
     }
   },
