@@ -1,8 +1,8 @@
 <template>
   <div class="container" style="width: 100%;max-width: 800px; margin:0 auto; display: flex; flex-direction: column">
     <div style="text-align: center;margin-top: 50px;  ">
-      <div class="subtitle">小姐姐大舞台</div>
-      <div id="mse" style="margin-top: 20px;"></div>
+      <div><img src="../src/assets/title.png"></div>
+      <div id="mse" style="margin-top: 20px;height: 450px;"></div>
       <div class="buttons" style="margin-top: 20px;">
         <van-button type="primary" size="small" @click="download">下载</van-button>
         <van-button type="success" style="margin-left: 10px;" size="small" @click="isAutoNext = !isAutoNext">自动播放:{{
@@ -59,7 +59,7 @@ export default {
         autoplayMuted: true,
       });
       player.on(Events.ENDED, async () => {
-        if(this.isAutoNext){
+        if (this.isAutoNext) {
           this.next()
         }
       })
@@ -108,9 +108,4 @@ export default {
   },
 };
 </script>
-<style scoped>
-.subtitle {
-  font-weight: bold;
-  font-size: 40px;
-}
-</style>
+<style scoped></style>
